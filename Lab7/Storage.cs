@@ -1,4 +1,6 @@
-﻿namespace Lab7
+﻿using System.Collections.Generic;
+
+namespace Lab7
 {
     /// <summary>
     /// Storage is a class for managing spare parts in the Storage
@@ -28,18 +30,15 @@
         /// Remove the Spare part from the Storage
         /// </summary>
         /// <param name="partId">Id of the spare part to delete</param>
-        public void RemovePart(int partId)
+        public void RemovePart(SparePart partToRemove)
         {
-            foreach (SparePart partToRemove in spareParts)
+            if (spareParts.Contains(partToRemove))
             {
-                if (partToRemove.Id == partId)
-                {
-                    spareParts.Remove(partToRemove);
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException("This spare part is not exist!/Incorrect Id.");
-                }
+                spareParts.Remove(partToRemove);
+            }
+            else
+            {
+                throw new ArgumentException("This spare part does not exist!");
             }
         }
 
@@ -58,6 +57,7 @@
             }
             throw new ArgumentOutOfRangeException("Element not found!");
         }
+
 
         public List<SparePart> GetAllParts()
         {
