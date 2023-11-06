@@ -15,15 +15,15 @@ namespace Lab7
         /// <param name="newPart">Part for add.</param>
         public void AddPart(SparePart newPart)
         {
-
-            if (!spareParts.Contains(newPart))
+            if (newPart != null && !spareParts.Contains(newPart))
             {
                 spareParts.Add(newPart);
             }
             else
             {
-                throw new ArgumentOutOfRangeException("This spare part is already in Storage!/Incorrect Id.");
+                throw new ArgumentOutOfRangeException("Data can`t be null!/Part is already in Storage!");
             }
+
         }
 
         /// <summary>
@@ -32,13 +32,13 @@ namespace Lab7
         /// <param name="partId">Id of the spare part to delete</param>
         public void RemovePart(SparePart partToRemove)
         {
-            if (spareParts.Contains(partToRemove))
+            if (partToRemove != null && spareParts.Contains(partToRemove))
             {
                 spareParts.Remove(partToRemove);
             }
             else
             {
-                throw new ArgumentException("This spare part does not exist!");
+                throw new ArgumentException("Data can`t be null!/This spare part does not exist!");
             }
         }
 

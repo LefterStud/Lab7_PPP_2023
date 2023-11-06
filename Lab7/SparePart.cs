@@ -11,20 +11,21 @@ namespace Lab7
         private int _id;
         private int _cost;
         private int _weight;
+        private static int nextId = 1;
 
         /// <summary>
         /// Creates a new instance of the SparePart class.
         /// </summary>
         /// <param name="name">Name of the spare part.</param>
-        /// <param name="id">Id of the spare part.</param>
         /// <param name="cost">Cost of the spare part.</param>
         /// <param name="weight">Weight of the spare part.</param>
-        public SparePart(string name, int id, int cost, int weight)
+        public SparePart(string name, int cost, int weight)
         {
             Name = name;
-            Id = id;
             Cost = cost;
             Weight = weight;
+            _id = nextId;
+            nextId++;
         }
 
         /// <summary>
@@ -48,24 +49,10 @@ namespace Lab7
         }
 
         /// <summary>
-        /// Setter and getter for the _id field.
-        /// Spare part`s id.
+        /// Getter for the _id field.
+        /// Spare part`s unique ID.
         /// </summary>
-        public int Id
-        {
-            get => _id;
-            set
-            {
-                if (value > 0)
-                {
-                    _id = value;
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException("Incorrect id of spare part!");
-                }
-            }
-        }
+        public int Id => _id;
 
         /// <summary>
         /// Setter and getter for the _cost field.
